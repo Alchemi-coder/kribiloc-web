@@ -29,11 +29,6 @@ export default async function Home() {
             
             {/* Left — Message principal */}
             <div className="flex flex-col items-start">
-              {/* Badge de confiance */}
-              <span className="inline-block bg-red-50 text-[#e4002b] rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium mb-4">
-                🏠 Plateforme de confiance à Kribi
-              </span>
-
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black leading-[1.1] tracking-tight text-[#111315]">
                 Trouver une location à{' '}
                 <span className="text-[#e4002b]">Kribi</span>{' '}
@@ -61,30 +56,15 @@ export default async function Home() {
               </p>
             </div>
 
-            {/* Right — Illustration : visible sur mobile (en bas) ET desktop (à droite) */}
             <div className="flex items-center justify-center mt-6 lg:mt-0">
-              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-full">
-                <Image
-                  src="/hero-illustration.jpg"
-                  alt="Trouvez votre location à Kribi sur la carte"
-                  width={560}
-                  height={420}
-                  className="w-full h-auto rounded-2xl lg:rounded-3xl shadow-xl"
-                  priority
-                />
-                {/* Badge flottant sur l'image */}
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg px-4 py-3 flex items-center gap-3 border border-gray-100">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#111315]">Certifié terrain</p>
-                    <p className="text-xs text-gray-400">Badge de confiance</p>
-                  </div>
-                </div>
-              </div>
+              <Image
+                src="/hero-illustration.jpg"
+                alt="Trouvez votre location à Kribi sur la carte"
+                width={560}
+                height={420}
+                className="w-full h-auto"
+                priority
+              />
             </div>
 
           </div>

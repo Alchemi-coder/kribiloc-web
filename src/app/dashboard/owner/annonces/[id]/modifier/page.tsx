@@ -1,8 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 import { ArrowLeft, Save, Trash2 } from 'lucide-react'
 
 export default async function EditListingPage({ params }: { params: Promise<{ id: string }> }) {
@@ -100,8 +98,7 @@ export default async function EditListingPage({ params }: { params: Promise<{ id
 
   return (
     <>
-      <Header />
-      <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+<div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link href="/dashboard/owner/annonces" className="inline-flex items-center text-gray-500 hover:text-gray-900 mb-8 font-medium transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -201,7 +198,6 @@ export default async function EditListingPage({ params }: { params: Promise<{ id
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+</>
   )
 }

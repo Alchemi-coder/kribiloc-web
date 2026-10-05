@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { createClient } from '@/lib/supabase/client';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { updateProfile } from '@/lib/actions';
 import { User, Phone, Mail, Save, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 
@@ -80,9 +78,7 @@ export default function TenantProfilePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-grow pt-10 pb-24">
+<main className="flex-grow pt-10 pb-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-8">
@@ -200,8 +196,6 @@ export default function TenantProfilePage() {
           
         </div>
       </main>
-      
-      <Footer />
-    </div>
+</div>
   );
 }

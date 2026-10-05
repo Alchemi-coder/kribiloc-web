@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 
 export default function ForgotPasswordPage() {
@@ -32,9 +30,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-grow flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+<main className="flex-grow flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md bg-white border border-gray-100 rounded-2xl shadow-sm p-8">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-black text-[#111315]">Mot de passe oublié</h1>
@@ -84,8 +80,6 @@ export default function ForgotPasswordPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+</div>
   );
 }

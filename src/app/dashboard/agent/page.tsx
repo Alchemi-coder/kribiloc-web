@@ -2,8 +2,6 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ClipboardList, Calendar, MapPin, Target } from 'lucide-react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 
 export const dynamic = 'force-dynamic';
 
@@ -57,9 +55,7 @@ export default async function AgentDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+<main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-[#111315]">Espace Agent</h1>
           <p className="text-gray-500 mt-2">Bienvenue, {profile.full_name}</p>
@@ -186,8 +182,6 @@ export default async function AgentDashboardPage() {
           </div>
         </div>
       </main>
-      
-      <Footer />
-    </div>
+</div>
   );
 }

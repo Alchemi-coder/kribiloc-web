@@ -1,8 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 import { Home, Calendar, Shield, MapPin, Mail, Phone } from 'lucide-react'
 import VisitActions from './VisitActions'
 
@@ -41,9 +39,7 @@ export default async function OwnerVisitsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-grow py-16">
+<main className="flex-grow py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -166,8 +162,6 @@ export default async function OwnerVisitsPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+</div>
   )
 }

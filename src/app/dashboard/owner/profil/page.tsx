@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 import { Home, Calendar, Shield, Save, User, Mail, Phone, Camera } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { updateProfile } from '@/lib/actions'
@@ -77,9 +75,7 @@ export default function OwnerProfilePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-grow py-16">
+<main className="flex-grow py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -216,8 +212,6 @@ export default function OwnerProfilePage() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+</div>
   )
 }

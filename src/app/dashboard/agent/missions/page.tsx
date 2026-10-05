@@ -2,8 +2,6 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,9 +36,7 @@ export default async function AgentMissionsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+<main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-[#111315]">Missions terrain</h1>
@@ -120,8 +116,6 @@ export default async function AgentMissionsPage() {
           )}
         </div>
       </main>
-      
-      <Footer />
-    </div>
+</div>
   );
 }

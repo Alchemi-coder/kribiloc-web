@@ -1,8 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import PropertyActions from './PropertyActions';
 import { Home, MapPin, Shield, Phone, Bed, Bath, Maximize, Sofa, CheckCircle2, AlertCircle, Heart } from 'lucide-react';
 
@@ -81,9 +79,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-
-      <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+<main className="flex-grow py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Main Content */}
@@ -245,8 +241,6 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+</div>
   );
 }

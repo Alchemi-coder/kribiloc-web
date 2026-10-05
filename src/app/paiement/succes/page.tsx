@@ -1,6 +1,4 @@
 import { createClient } from '@/lib/supabase/server';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 import { CheckCircle2, FileText, Clock, Shield } from 'lucide-react';
 
@@ -27,9 +25,7 @@ export default async function PaiementSuccesPage({ searchParams }: { searchParam
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      
-      <main className="flex-grow flex flex-col items-center justify-center p-4 relative overflow-hidden">
+<main className="flex-grow flex flex-col items-center justify-center p-4 relative overflow-hidden">
         {/* Subtle decorative background elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
         <div className="absolute top-20 right-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
@@ -122,8 +118,6 @@ export default async function PaiementSuccesPage({ searchParams }: { searchParam
 
         </div>
       </main>
-      
-      <Footer />
-    </div>
+</div>
   );
 }

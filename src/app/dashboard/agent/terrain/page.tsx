@@ -7,7 +7,6 @@ import {
   ChevronDown, ChevronUp, MapPin, Navigation, Save, 
   CheckCircle, XCircle, AlertTriangle, Camera
 } from 'lucide-react';
-import Header from '@/components/layout/Header';
 
 export const dynamic = 'force-dynamic';
 
@@ -113,8 +112,7 @@ function AgentTerrainPageInner() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Header />
-        <div className="flex-1 flex items-center justify-center"><p>Chargement de la mission...</p></div>
+<div className="flex-1 flex items-center justify-center"><p>Chargement de la mission...</p></div>
       </div>
     );
   }
@@ -122,8 +120,7 @@ function AgentTerrainPageInner() {
   if (!missionId || !mission) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Header />
-        <div className="flex-1 flex flex-col items-center justify-center p-4 text-center">
+<div className="flex-1 flex flex-col items-center justify-center p-4 text-center">
           <AlertTriangle className="w-12 h-12 text-yellow-500 mb-4" />
           <h1 className="text-2xl font-bold mb-2">Mission introuvable</h1>
           <p className="text-gray-500 mb-6">La mission demandee nexiste pas ou nest plus accessible.</p>

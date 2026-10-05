@@ -1,8 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { Heart, Calendar, Bell, User, Search, ChevronRight, Home, MapPin } from 'lucide-react';
 
 export const metadata = {
@@ -89,9 +87,7 @@ export default async function TenantDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-grow pt-10 pb-24">
+<main className="flex-grow pt-10 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Welcome Banner */}
@@ -261,8 +257,6 @@ export default async function TenantDashboardPage() {
           </div>
         </div>
       </main>
-      
-      <Footer />
-    </div>
+</div>
   );
 }

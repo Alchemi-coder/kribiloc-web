@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { createCertificationRequests, calculateCertificationQuote, CertificationItem } from '@/lib/certification-actions';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { Shield, CheckCircle, Building2, AlertCircle, ChevronRight, Loader2 } from 'lucide-react';
 
 export default function CertifierPage() {
@@ -108,8 +106,7 @@ export default function CertifierPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      <main className="flex-grow container mx-auto px-4 py-8 max-w-4xl">
+<main className="flex-grow container mx-auto px-4 py-8 max-w-4xl">
         <h1 className="text-3xl font-bold mb-8 text-[#111315] flex items-center gap-3">
           <Shield className="text-[#e4002b] w-8 h-8" />
           Faire certifier mes biens
@@ -305,7 +302,6 @@ export default function CertifierPage() {
           </div>
         )}
       </main>
-      <Footer />
-    </div>
+</div>
   );
 }

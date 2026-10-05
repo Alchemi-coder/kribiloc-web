@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { User, Phone, Mail, CreditCard, Shield, CheckCircle } from 'lucide-react';
 
 export default function AgentProfilPage() {
@@ -74,20 +72,16 @@ export default function AgentProfilPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Header />
-        <div className="flex-1 flex items-center justify-center">
+<div className="flex-1 flex items-center justify-center">
           <p>Chargement...</p>
         </div>
-        <Footer />
-      </div>
+</div>
     );
   }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+<main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <h1 className="text-3xl font-bold text-[#111315] mb-8">Mon Profil Agent</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -248,8 +242,6 @@ export default function AgentProfilPage() {
           </div>
         </div>
       </main>
-      
-      <Footer />
-    </div>
+</div>
   );
 }

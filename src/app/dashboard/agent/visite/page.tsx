@@ -1,0 +1,19 @@
+import { createClient } from '@/lib/supabase/server'
+import { redirect } from 'next/navigation'
+
+export default async function AgentDashboardPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  
+  if (!user) redirect('/connexion')
+
+  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
+  if (profile?.role !== 'agent') redirect('/dashboard')
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-8">
+      <h1 className="text-3xl font-bold mb-4">Espace Agent Terrain</h1>
+      <p className="text-gray-600">Bienvenue dans votre espace d'évaluation et de certification.</p>
+    </div>
+  )
+}

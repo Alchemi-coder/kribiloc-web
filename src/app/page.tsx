@@ -23,30 +23,35 @@ export default async function Home() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="min-h-[85vh] flex items-center pt-24 pb-12 lg:pb-24">
+      <section className="min-h-[90vh] flex items-center pt-24 pb-12 lg:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             
             {/* Left — Message principal */}
             <div className="flex flex-col items-start">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-[#111315]">
+              {/* Badge de confiance */}
+              <span className="inline-block bg-red-50 text-[#e4002b] rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium mb-4">
+                🏠 Plateforme de confiance à Kribi
+              </span>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black leading-[1.1] tracking-tight text-[#111315]">
                 Trouver une location à{' '}
                 <span className="text-[#e4002b]">Kribi</span>{' '}
                 n&apos;a jamais été aussi facile
               </h1>
-              <p className="text-lg text-gray-500 mt-6 max-w-lg leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-500 mt-4 sm:mt-6 max-w-lg leading-relaxed">
                 Chambre, appartement, studio, maison — recherchez gratuitement parmi les logements disponibles à Kribi, ou publiez le vôtre en quelques minutes.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mt-10 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 w-full sm:w-auto">
                 <Link
                   href="/inscription"
-                  className="bg-[#e4002b] text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-[#c5001f] transition-all shadow-lg shadow-red-200 text-center"
+                  className="bg-[#e4002b] text-white px-7 py-4 rounded-full font-semibold text-base hover:bg-[#c5001f] transition-all shadow-lg shadow-red-200 text-center"
                 >
                   Je cherche un logement
                 </Link>
                 <Link
                   href="/inscription"
-                  className="border-2 border-[#111315] text-[#111315] px-8 py-4 rounded-full font-semibold text-base hover:bg-[#111315] hover:text-white transition-all text-center"
+                  className="border-2 border-[#111315] text-[#111315] px-7 py-4 rounded-full font-semibold text-base hover:bg-[#111315] hover:text-white transition-all text-center"
                 >
                   Je suis propriétaire
                 </Link>
@@ -56,17 +61,32 @@ export default async function Home() {
               </p>
             </div>
 
-            {/* Right — Illustration */}
-            <div className="hidden lg:flex items-center justify-center">
-              <Image
-                src="/hero-illustration.jpg"
-                alt="Trouvez votre location à Kribi sur la carte"
-                width={560}
-                height={420}
-                className="w-full h-auto rounded-3xl"
-                priority
-              />
+            {/* Right — Illustration : visible sur mobile (en bas) ET desktop (à droite) */}
+            <div className="flex items-center justify-center mt-6 lg:mt-0">
+              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-full">
+                <Image
+                  src="/hero-illustration.jpg"
+                  alt="Trouvez votre location à Kribi sur la carte"
+                  width={560}
+                  height={420}
+                  className="w-full h-auto rounded-2xl lg:rounded-3xl shadow-xl"
+                  priority
+                />
+                {/* Badge flottant sur l'image */}
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg px-4 py-3 flex items-center gap-3 border border-gray-100">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-[#111315]">Certifié terrain</p>
+                    <p className="text-xs text-gray-400">Badge de confiance</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>

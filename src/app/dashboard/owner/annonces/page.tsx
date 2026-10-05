@@ -23,7 +23,7 @@ export default async function OwnerDashboardPage() {
     redirect('/dashboard')
   }
 
-  // Fetch owner's properties
+  // Fetch owner's properties — ALL statuses (draft, pending, published, etc.)
   const { data: properties } = await supabase
     .from('properties')
     .select(`
@@ -92,17 +92,23 @@ export default async function OwnerDashboardPage() {
                       <td className="p-4">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           property.availability_status === 'published' ? 'bg-green-100 text-green-800' : 
-                          property.availability_status === 'draft' ? 'bg-gray-100 text-gray-800' : 
-                          'bg-yellow-100 text-yellow-800'
+                          property.availability_status === 'draft' ? 'bg-gray-100 text-gray-700' : 
+                          property.availability_status === 'pending_moderation' ? 'bg-yellow-100 text-yellow-800' :
+                          property.availability_status === 'rented' ? 'bg-blue-100 text-blue-800' :
+                          property.availability_status === 'suspended' ? 'bg-red-100 text-red-800' :
+                          'bg-gray-100 text-gray-700'
                         }`}>
-                          {property.availability_status === 'published' ? 'Publiée' : 
-                           property.availability_status === 'draft' ? 'Brouillon' : 
-                           'En révision'}
+                          {property.availability_status === 'published' ? '✓ Publiée' : 
+                           property.availability_status === 'draft' ? '✏️ Brouillon' : 
+                           property.availability_status === 'pending_moderation' ? '⏳ En modération' :
+                           property.availability_status === 'rented' ? '🔑 Louée' :
+                           property.availability_status === 'suspended' ? '⛔ Suspendue' :
+                           property.availability_status}
                         </span>
                       </td>
                       <td className="p-4">
                         <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Link href={`/locations/${property.id}`} className="p-2 text-gray-400 hover:text-blue-600 bg-white rounded-lg border border-gray-200 shadow-sm transition-all" title="Voir">
+                          <Link href={`/locations/${property.id}`} className="p-2 text-gray-400 hover:text-blue-600 bg-white rounded-lg border border-gray-200 shadow-sm transition-all" title="Aperçu">
                             <Eye className="w-4 h-4" />
                           </Link>
                           <Link href={`/dashboard/owner/annonces/${property.id}/modifier`} className="p-2 text-gray-400 hover:text-green-600 bg-white rounded-lg border border-gray-200 shadow-sm transition-all" title="Modifier">
@@ -124,8 +130,8 @@ export default async function OwnerDashboardPage() {
             <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center text-[#e4002b] mb-4">
               <Home className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Aucune annonce publiée</h3>
-            <p className="text-gray-500 mb-6 max-w-md mx-auto">Vous n'avez pas encore publié de biens. Commencez à louer vos propriétés en créant votre première annonce.</p>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Aucune annonce pour l'instant</h3>
+            <p className="text-gray-500 mb-6 max-w-md mx-auto">Vous n'avez pas encore créé de bien. Cliquez ci-dessous pour publier votre première annonce.</p>
             <Link
               href="/dashboard/owner/annonces/nouvelle"
               className="inline-flex items-center justify-center bg-[#e4002b] hover:bg-[#c5001f] text-white px-6 py-3 rounded-xl font-semibold transition-all shadow"

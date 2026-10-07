@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Check, X, PauseCircle } from 'lucide-react';
-// import { adminModerateProperty } from '@/lib/actions';
+import { adminModerateProperty } from '@/lib/actions';
 
 export function ModerationActions({ propertyId, initialStatus }: { propertyId: string, initialStatus: string }) {
   const [loading, setLoading] = useState(false);
@@ -11,32 +11,37 @@ export function ModerationActions({ propertyId, initialStatus }: { propertyId: s
   const handleAction = async (action: 'publish' | 'suspend' | 'reject') => {
     try {
       setLoading(true);
-      // await adminModerateProperty(propertyId, action);
       
-      // Temporary optimistic update until server action is linked
-      if (action === 'publish') setCurrentStatus('published');
-      if (action === 'suspend') setCurrentStatus('suspended');
-      if (action === 'reject') setCurrentStatus('rejected');
+      const newStatus = action === 'publish' ? 'published' : action === 'suspend' ? 'suspended' : 'hidden'; // 'rejected' could map to 'hidden' or 'draft'
       
-      alert(`Action '${action}' effectuée avec succès.`);
-    } catch (error) {
+      const result = await adminModerateProperty({ 
+        propertyId, 
+        status: newStatus as 'published' | 'suspended' | 'rejected' 
+      });
+      
+      if (!result.success) {
+        throw new Error(result.error);
+      }
+
+      setCurrentStatus(newStatus);
+    } catch (error: any) {
       console.error(error);
-      alert('Une erreur est survenue.');
+      alert(error.message || 'Une erreur est survenue.');
     } finally {
       setLoading(false);
     }
   };
 
   if (currentStatus === 'published') {
-    return <span className="text-sm font-medium text-green-600 bg-green-50 px-3 py-1 rounded-full border border-green-200">Publié</span>;
+    return <span className="text-sm font-medium text-green-600 bg-green-50 px-3 py-1 rounded-full border border-green-200">Publiée</span>;
   }
   
   if (currentStatus === 'suspended') {
-    return <span className="text-sm font-medium text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">Suspendu</span>;
+    return <span className="text-sm font-medium text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">Suspendue</span>;
   }
   
-  if (currentStatus === 'rejected') {
-    return <span className="text-sm font-medium text-red-600 bg-red-50 px-3 py-1 rounded-full border border-red-200">Rejeté</span>;
+  if (currentStatus === 'hidden' || currentStatus === 'rejected') {
+    return <span className="text-sm font-medium text-red-600 bg-red-50 px-3 py-1 rounded-full border border-red-200">Rejetée/Masquée</span>;
   }
 
   return (

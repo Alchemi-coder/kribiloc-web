@@ -298,8 +298,7 @@ export async function adminModerateProperty(data: {
     const { error } = await supabase
       .from('properties')
       .update({ 
-        status: data.status,
-        moderation_reason: data.reason || null
+        availability_status: data.status,
       })
       .eq('id', data.propertyId)
 

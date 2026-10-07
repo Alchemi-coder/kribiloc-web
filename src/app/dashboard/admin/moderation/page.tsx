@@ -5,6 +5,8 @@ import { ModerationActions } from './ModerationActions';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ModerationPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
   const supabase = await createClient();
   const params = await searchParams;
@@ -15,32 +17,32 @@ export default async function ModerationPage({ searchParams }: { searchParams: P
     .select(`
       id,
       title,
-      property_type,
+      type,
       price,
       created_at,
-      status,
+      availability_status,
       owner_id,
       profiles:owner_id (full_name)
     `)
     .order('created_at', { ascending: false });
 
   if (currentTab === 'pending') {
-    query = query.in('status', ['pending_moderation', 'draft']);
+    query = query.in('availability_status', ['pending_moderation', 'draft']);
   }
 
   const { data: properties, error } = await query;
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-<main className="flex-grow py-16">
+      <main className="flex-grow py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-8">
           {/* Sidebar Admin */}
           <aside className="w-64 flex-shrink-0 hidden md:block">
             <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 sticky top-6">
               <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-2">Menu Admin</h2>
               <nav className="flex flex-col gap-1">
-                <Link href="/dashboard/admin/parametres" className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-xl font-medium transition-colors">
-                  Paramètres
+                <Link href="/dashboard/admin/utilisateurs" className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-xl font-medium transition-colors">
+                  Utilisateurs
                 </Link>
                 <Link href="/dashboard/admin/audit" className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-xl font-medium transition-colors">
                   Journal d'audit
@@ -93,7 +95,7 @@ export default async function ModerationPage({ searchParams }: { searchParams: P
                         <div className="flex items-center gap-3 mb-2">
                           <h3 className="font-bold text-lg text-[#111315]">{property.title}</h3>
                           <span className="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-md">
-                            {property.property_type}
+                            {property.type}
                           </span>
                         </div>
                         <div className="flex flex-wrap items-center text-sm text-gray-500 gap-4">
@@ -106,7 +108,7 @@ export default async function ModerationPage({ searchParams }: { searchParams: P
                       </div>
                       
                       <div className="flex-shrink-0">
-                        <ModerationActions propertyId={property.id} initialStatus={property.status} />
+                        <ModerationActions propertyId={property.id} initialStatus={property.availability_status} />
                       </div>
                     </div>
                   ))
@@ -116,6 +118,6 @@ export default async function ModerationPage({ searchParams }: { searchParams: P
           </div>
         </div>
       </main>
-</div>
+    </div>
   );
 }

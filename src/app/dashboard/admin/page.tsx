@@ -83,21 +83,40 @@ export default async function AdminDashboardPage() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {kpis.map((kpi, idx) => (
-              <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 flex items-center space-x-4">
-                <div className={`p-4 rounded-full ${kpi.bgColor}`}>
-                  {kpi.icon}
+            {kpis.map((kpi, idx) => {
+              const card = (
+                <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 flex items-center space-x-4 hover:shadow-md transition-shadow cursor-pointer">
+                  <div className={`p-4 rounded-full ${kpi.bgColor}`}>
+                    {kpi.icon}
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 font-medium">{kpi.title}</p>
+                    <p className="text-2xl font-bold text-[#111315]">{kpi.value}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-500 font-medium">{kpi.title}</p>
-                  <p className="text-2xl font-bold text-[#111315]">{kpi.value}</p>
-                </div>
-              </div>
-            ))}
+              );
+              
+              if (kpi.title === 'En attente') return <Link key={idx} href="/dashboard/admin/moderation">{card}</Link>;
+              if (kpi.title === 'Utilisateurs') return <Link key={idx} href="/dashboard/admin/utilisateurs">{card}</Link>;
+              if (kpi.title === 'Paiements') return <Link key={idx} href="/dashboard/admin/paiements">{card}</Link>;
+              if (kpi.title === 'Certifications') return <Link key={idx} href="/dashboard/admin/certifications">{card}</Link>;
+              if (kpi.title === 'Signalements') return <Link key={idx} href="/dashboard/admin/signalements">{card}</Link>;
+              
+              return card;
+            })}
           </div>
 
           <h2 className="text-xl font-bold text-[#111315] mb-6">Accès rapides</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Link href="/dashboard/admin/moderation">
+              <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all cursor-pointer h-full border-l-4 border-l-yellow-400">
+                <div className="mb-4">
+                  <Shield className="w-6 h-6 text-yellow-500" />
+                </div>
+                <h3 className="font-semibold text-[#111315] mb-2">Modération</h3>
+                <p className="text-sm text-gray-500">Valider les annonces</p>
+              </div>
+            </Link>
             {quickLinks.map((link, idx) => (
               <Link key={idx} href={link.href}>
                 <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all cursor-pointer h-full">
